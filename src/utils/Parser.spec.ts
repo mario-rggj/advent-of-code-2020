@@ -5,7 +5,7 @@ describe('Given text file with numbers, separated by newline', () => {
 	const testFilePath = './src/utils/input-test.txt';
 
 	beforeEach(() => {
-		fs.writeFileSync(testFilePath, '1000\n5\n1020\n500\n100');
+		fs.writeFileSync(testFilePath, '1000\n5\n1020\n500\n100\n');
 	});
 
 	afterEach(() => {
