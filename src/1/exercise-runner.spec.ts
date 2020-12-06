@@ -4,7 +4,7 @@ import * as exerciseRunner from './exercise-runner';
 
 describe('Exercise 1', () => {
 	describe('Given a valid expense report', () => {
-		const testFilePath = './src/1/input-test.txt';
+		const testFilePath = './src/1/test-input.txt';
 
 		beforeEach(() => {
 			fs.writeFileSync(testFilePath, '0\n1\n2019\n');

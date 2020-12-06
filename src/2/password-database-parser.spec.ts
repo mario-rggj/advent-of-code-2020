@@ -5,7 +5,7 @@ import Policy from './policy';
 
 describe('Password Database Parser', () => {
 	describe('Given valid input file', () => {
-		const testFilePath = './src/2/input-test.txt';
+		const testFilePath = './src/2/parser-input-test.txt';
 
 		beforeEach(() => {
 			const testFileContent = 
