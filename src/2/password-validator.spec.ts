@@ -23,6 +23,7 @@ describe('Password Validator', () => {
 		const databaseEntries: Array<DatabaseEntry> = [
 			new DatabaseEntry(new TobogganPolicy(1, 3, 'a'), 'abcde'),
 			new DatabaseEntry(new TobogganPolicy(1, 3, 'b'), 'cdbefg'),
+			new DatabaseEntry(new TobogganPolicy(4, 6, 't'), 'tttttttttt'),
 			new DatabaseEntry(new TobogganPolicy(2, 9, 'c'), 'cbccccccb')
 		];
 

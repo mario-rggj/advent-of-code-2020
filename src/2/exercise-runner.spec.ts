@@ -23,7 +23,7 @@ describe('Exercise 2', () => {
 		it('counts valid password amount', () => {
 			const
 				exerciseResult: ExerciseRunnerResult = exerciseRunner.run(testFilePath),
-				expectedResult: ExerciseRunnerResult = { partOne: 2, partTwo: 4 };
+				expectedResult: ExerciseRunnerResult = { partOne: 2, partTwo: 2 };
 
 			expect(exerciseResult).toEqual(expectedResult);
 		});
