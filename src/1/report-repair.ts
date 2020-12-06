@@ -3,7 +3,7 @@ export default function reportRepair(expenseReport: Array<number>): number {
 	for (let currentIndex = 0; currentIndex < expenseReport.length; currentIndex++) {
 		const currentEntry = expenseReport[currentIndex];
 		
-		for (let comparativeIndex = 0; comparativeIndex < expenseReport.length; comparativeIndex++) {
+		for (let comparativeIndex = currentIndex + 1; comparativeIndex < expenseReport.length; comparativeIndex++) {
 			const 
 				comparativeEntry = expenseReport[comparativeIndex],
 				indexesAreDifferent = currentIndex !== comparativeIndex,
