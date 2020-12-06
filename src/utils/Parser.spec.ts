@@ -12,6 +12,14 @@ describe('Given text file with numbers, separated by newline', () => {
 		fs.rmSync(testFilePath);
 	});
 
+	it('parses input file lines to string array', () => {
+		const
+			expectedArray = ['1000', '5', '1020', '500', '100'],
+			parsedLinesArray = Parser.fromTxtToStringArray(testFilePath);
+
+		expect(parsedLinesArray).toEqual(expectedArray);
+	});
+
 	it('parses input file to number array', () => {
 		const
 			expectedNumberArray = [1000, 5, 1020, 500, 100],

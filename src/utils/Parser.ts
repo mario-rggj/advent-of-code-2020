@@ -1,12 +1,16 @@
 import fs from 'fs';
 
 export default class Parser {
+
+	private static readFileContent(filePath: string) {
+		return fs.readFileSync(filePath).toString();
+	}
+
+	static fromTxtToStringArray(filePath: string) {
+		return Parser.readFileContent(filePath).split('\n');
+	}
+
 	static fromTxtToNumberArray(filePath: string): Array<number> {
-
-		const 
-			file = fs.readFileSync(filePath),
-			fileContent = file.toString();
-
-		return fileContent.split('\n').map(value => Number.parseInt(value));
+		return Parser.fromTxtToStringArray(filePath).map(value => Number.parseInt(value));
 	}
 }
