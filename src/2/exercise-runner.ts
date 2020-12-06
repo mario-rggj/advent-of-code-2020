@@ -1,13 +1,14 @@
 import { ExerciseRunnerResult } from '../utils/exercise-runner-result';
-import Parser from '../utils/Parser';
-import PasswordDatabaseParser from './password-database-parser';
+import PasswordDatabaseParser, { PolicyParseConfiguration } from './password-database-parser';
 import PasswordValidator from './password-validator';
 
 export function run(filePath = './src/2/password-database.txt'): ExerciseRunnerResult {
-	const parsedDatabase = PasswordDatabaseParser.fromTxtToPasswordDatabase(filePath);
-	const passwordValidator = new PasswordValidator(parsedDatabase);
+	const sledParsedDatabase = PasswordDatabaseParser.fromTxtToPasswordDatabase(filePath, PolicyParseConfiguration.SLED);
+	const tobogganParsedDatabase = PasswordDatabaseParser.fromTxtToPasswordDatabase(filePath, PolicyParseConfiguration.TOBOGGAN);
+	const sledPasswordValidator = new PasswordValidator(sledParsedDatabase);
+	const tobogganPasswordValidator = new PasswordValidator(tobogganParsedDatabase);
 	return { 
-		partOne: passwordValidator.calculateValidPasswordAmount(),
-		partTwo: 0
+		partOne: sledPasswordValidator.calculateValidPasswordAmount(),
+		partTwo: tobogganPasswordValidator.calculateValidPasswordAmount()
 	};
 }

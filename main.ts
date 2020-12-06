@@ -11,3 +11,4 @@ console.log('===========================================');
 console.log('running exercise 2');
 const exerciseTwoResults = exercise2.run();
 console.log('part one result:', exerciseTwoResults.partOne);
+console.log('part two result:', exerciseTwoResults.partTwo);

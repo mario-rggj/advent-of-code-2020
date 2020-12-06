@@ -10,7 +10,9 @@ describe('Exercise 2', () => {
 			const testFileContent = 
 				'2-3 k: abkcdek\n'+
 				'3-3 b: bcbdebfg\n'+
-				'2-9 c: cccccccccc\n';
+				'2-9 c: cccccccccc\n'+
+				'5-6 f: ascvgfh\n'+
+				'4-6 q: aaaaaaaaa\n';
 			fs.writeFileSync(testFilePath, testFileContent);
 		});
 
@@ -21,7 +23,7 @@ describe('Exercise 2', () => {
 		it('counts valid password amount', () => {
 			const
 				exerciseResult: ExerciseRunnerResult = exerciseRunner.run(testFilePath),
-				expectedResult: ExerciseRunnerResult = { partOne: 2, partTwo: 0 };
+				expectedResult: ExerciseRunnerResult = { partOne: 2, partTwo: 4 };
 
 			expect(exerciseResult).toEqual(expectedResult);
 		});
