@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { ExerciseRunnerResult } from '../utils/exercise-runner-result';
 import * as exerciseRunner from './exercise-runner';
 
 describe('Exercise 1', () => {
@@ -6,7 +7,7 @@ describe('Exercise 1', () => {
 		const testFilePath = './src/1/input-test.txt';
 
 		beforeEach(() => {
-			fs.writeFileSync(testFilePath, '500\n100\n10\n2019\n1');
+			fs.writeFileSync(testFilePath, '0\n1\n2019\n');
 		});
 
 		afterEach(() => {
@@ -15,12 +16,11 @@ describe('Exercise 1', () => {
 
 		it('multiplies entries that sum up to 2020', () => {
 			const
-				exerciseResult = exerciseRunner.run(testFilePath),
-				expectedResult = 2019;
+				exerciseResult: ExerciseRunnerResult = exerciseRunner.run(testFilePath),
+				expectedResult: ExerciseRunnerResult = { partOne: 2019, partTwo: 0 };
 
 			expect(exerciseResult).toEqual(expectedResult);
 		});
 
 	});
 });
-	

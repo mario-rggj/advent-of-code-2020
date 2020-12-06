@@ -1,4 +1,6 @@
 import * as exercise1 from './src/1/exercise-runner';
 
 console.log('running exercise 1');
-console.log('result:', exercise1.run());
+const exerciseOneResults = exercise1.run();
+console.log('part one result:', exerciseOneResults.partOne);
+console.log('part two result:', exerciseOneResults.partTwo);
