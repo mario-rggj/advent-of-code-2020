@@ -1,3 +1,5 @@
+import InvalidExpenseReportError from './Invalid-expense-report-error';
+
 export default function reportRepair(expenseReport: Array<number>): number {
 
 	for (let currentIndex = 0; currentIndex < expenseReport.length; currentIndex++) {
@@ -15,5 +17,5 @@ export default function reportRepair(expenseReport: Array<number>): number {
 		}
 	}
 
-	return 0;
+	throw new InvalidExpenseReportError;
 }
