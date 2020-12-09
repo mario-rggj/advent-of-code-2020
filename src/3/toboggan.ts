@@ -1,19 +1,25 @@
-import Slope from './map';
-import {Direction} from './direction';
+import Slope from './slope';
+import Direction from './direction';
 
 export default class Toboggan {
-	constructor(private readonly map: Slope, private readonly direction: Direction) {
+	constructor(private readonly slope: Slope, private readonly direction: Direction) {
 	}
 
-	moveAllTheWayToTheBottom() {
-		const currentPosition = this.map.getInitialPosition();
-		let amountOfTrees = 0;
+	goDownhill(): number {
+		let currentPosition = this.slope.getInitialPosition();
+		let treesHitCounter = currentPosition.isTree() ? 1 : 0;
+		let navigationResult;
 
-		while(!map.reachedBottom(currentPosition)) {
-			currentPosition = this.map.navigateFromTo(currentPosition, this.direction);
-			if(currentPosition.isTree()) {
-				amountOfTrees++;
+		do {
+			navigationResult = this.slope.navigate(currentPosition, this.direction);
+			currentPosition = navigationResult.newPosition;
+			
+			if (currentPosition.isTree()) {
+				treesHitCounter++;
 			}
-		}
+
+		} while (!navigationResult.reachedEnd);
+
+		return treesHitCounter;
 	}
 }

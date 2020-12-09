@@ -9,6 +9,14 @@ export default class Position {
 	) {
 	}
 
+	static treeAt(x: number, y: number): Position {
+		return new Position(PositionType.TREE, x, y);
+	}
+
+	static terrainAt(x: number, y: number): Position {
+		return new Position(PositionType.TERRAIN, x, y);
+	}
+
 	isTree(): boolean {
 		return this.positionType === PositionType.TREE;
 	}
