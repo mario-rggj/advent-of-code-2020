@@ -27,10 +27,6 @@ export default class Toboggan {
 		return treesHitCounter;
 	}
 
-	changeDirection(newDirection: Direction) {
-		this.direction = newDirection;
-	}
-
 	goDownhillInMultipleDirections(directions: Direction[]) {
 		const treeCounts: number[] = [];
 
@@ -40,5 +36,9 @@ export default class Toboggan {
 		});
 
 		return treeCounts;
+	}
+
+	private changeDirection(newDirection: Direction) {
+		this.direction = newDirection;
 	}
 }

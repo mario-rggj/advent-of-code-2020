@@ -9,7 +9,7 @@ describe('Exercise 3', () => {
 		beforeEach(() => {
 			const testFileContent =
 				'.#.#...#....\n' +
-				'.###...#....\n' +
+				'.###.#.#....\n' +
 				'.#.#####....\n';
 
 			fs.writeFileSync(slopeFilePath, testFileContent);
@@ -27,7 +27,7 @@ describe('Exercise 3', () => {
 		});
 
 		it('multiplies tree count in differenct directions', () => {
-			const expectedMultiplicationResult = 0;
+			const expectedMultiplicationResult = 2;
 			const result = exerciseRunner.run(slopeFilePath);
 
 			expect(result.partTwo).toEqual(expectedMultiplicationResult);

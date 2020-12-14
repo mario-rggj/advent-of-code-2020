@@ -22,17 +22,6 @@ describe('Toboggan', () => {
 		});
 	});
 
-	it('changes direction', () => {
-		const oldDirection = {down: 1, right: 3};
-		const newDirection = {down: 2, right: 5};
-		const slope = new Slope([[]]);
-		const toboggan = new Toboggan(slope, oldDirection);
-
-		toboggan.changeDirection(newDirection);
-
-		expect(toboggan.currentDirection).toEqual(newDirection);
-	});
-
 	it('goes downhill in multiple directions', () => {
 		const directions = [
 			{down: 1, right: 1},
