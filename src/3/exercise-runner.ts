@@ -26,8 +26,23 @@ export function run(filePath = './src/3/slope-input.txt'): ExerciseRunnerResult 
 	const direction = {right: 3, down: 1};
 	const toboggan = new Toboggan(slope, direction);
 
+	const partOneResult = toboggan.goDownhill();
+
+	const partTwoDirections = [
+		{right: 1, down: 1},
+		{right: 3, down: 1},
+		{right: 5, down: 1},
+		{right: 7, down: 1},
+		{right: 1, down: 2},
+	];
+	const partTwoResultArray = toboggan.goDownhillInMultipleDirections(partTwoDirections);
+	const partTwoResult = partTwoResultArray.reduce((previousValue, currentValue) => {
+		return previousValue * currentValue;
+	}, 1);
+
+
 	return {
-		partOne: toboggan.goDownhill(),
-		partTwo: 0
+		partOne: partOneResult,
+		partTwo: partTwoResult
 	};
 }

@@ -2,7 +2,11 @@ import Slope from './slope';
 import Direction from './direction';
 
 export default class Toboggan {
-	constructor(private readonly slope: Slope, private readonly direction: Direction) {
+	constructor(private readonly slope: Slope, private direction: Direction) {
+	}
+
+	get currentDirection(): Direction {
+		return this.direction;
 	}
 
 	goDownhill(): number {
@@ -13,7 +17,7 @@ export default class Toboggan {
 		do {
 			navigationResult = this.slope.navigate(currentPosition, this.direction);
 			currentPosition = navigationResult.newPosition;
-			
+
 			if (currentPosition.isTree()) {
 				treesHitCounter++;
 			}
@@ -21,5 +25,20 @@ export default class Toboggan {
 		} while (!navigationResult.reachedEnd);
 
 		return treesHitCounter;
+	}
+
+	changeDirection(newDirection: Direction) {
+		this.direction = newDirection;
+	}
+
+	goDownhillInMultipleDirections(directions: Direction[]) {
+		const treeCounts: number[] = [];
+
+		directions.forEach(direction => {
+			this.changeDirection(direction);
+			treeCounts.push(this.goDownhill());
+		});
+
+		return treeCounts;
 	}
 }

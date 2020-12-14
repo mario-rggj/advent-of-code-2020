@@ -25,6 +25,13 @@ describe('Exercise 3', () => {
 
 			expect(result.partOne).toEqual(expectedTreesCount);
 		});
+
+		it('multiplies tree count in differenct directions', () => {
+			const expectedMultiplicationResult = 0;
+			const result = exerciseRunner.run(slopeFilePath);
+
+			expect(result.partTwo).toEqual(expectedMultiplicationResult);
+		});
 	});
 
 });
