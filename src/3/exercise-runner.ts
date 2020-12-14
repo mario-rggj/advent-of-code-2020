@@ -1,7 +1,7 @@
 import { ExerciseRunnerResult } from '../utils/exercise-runner-result';
 import Parser from '../utils/Parser';
+import MultipleDirectionService from './multiple-direction-service';
 import Position from './position';
-import { PositionType } from './position-type';
 import Slope from './slope';
 import Toboggan from './toboggan';
 
@@ -25,6 +25,7 @@ export function run(filePath = './src/3/slope-input.txt'): ExerciseRunnerResult 
 	const slope = parseInput(filePath);
 	const direction = {right: 3, down: 1};
 	const toboggan = new Toboggan(slope, direction);
+	const tobogganService = new MultipleDirectionService();
 
 	const partOneResult = toboggan.goDownhill();
 
@@ -35,11 +36,7 @@ export function run(filePath = './src/3/slope-input.txt'): ExerciseRunnerResult 
 		{right: 7, down: 1},
 		{right: 1, down: 2},
 	];
-	const partTwoResultArray = toboggan.goDownhillInMultipleDirections(partTwoDirections);
-	const partTwoResult = partTwoResultArray.reduce((previousValue, currentValue) => {
-		return previousValue * currentValue;
-	}, 1);
-
+	const partTwoResult = tobogganService.goDownhillInMultipleDirections(toboggan, partTwoDirections);
 
 	return {
 		partOne: partOneResult,

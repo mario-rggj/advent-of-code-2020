@@ -22,15 +22,14 @@ describe('Toboggan', () => {
 		});
 	});
 
-	it('goes downhill in multiple directions', () => {
-		const directions = [
-			{down: 1, right: 1},
-			{down: 1, right: 2},
-		];
+	it('changes direction', () => {
+		const oldDirection = {down: 1, right: 3};
+		const newDirection = {down: 2, right: 5};
+		const slope = new Slope([[]]);
+		const toboggan = new Toboggan(slope, oldDirection);
 
-		const toboggan = new Toboggan(slope, {down: 1, right: 1});
-		const treesCountArray = toboggan.goDownhillInMultipleDirections(directions);
+		toboggan.changeDirection(newDirection);
 
-		expect(treesCountArray).toEqual([3,2]);
+		expect(toboggan.currentDirection).toEqual(newDirection);
 	});
 });
