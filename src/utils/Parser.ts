@@ -2,7 +2,7 @@ import fs from 'fs';
 
 export default class Parser {
 
-	private static readFileContent(filePath: string): string {
+	static readFileContent(filePath: string): string {
 		return fs.readFileSync(filePath).toString();
 	}
 
