@@ -33,5 +33,4 @@ describe('Exercise 3', () => {
 			expect(result.partTwo).toEqual(expectedMultiplicationResult);
 		});
 	});
-
 });

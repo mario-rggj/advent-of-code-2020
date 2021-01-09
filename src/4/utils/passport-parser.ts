@@ -1,4 +1,4 @@
-import Parser from '../../utils/Parser';
+import Parser from '../../utils/parser';
 import Passport from '../models/passport';
 
 export default class PassportParser {

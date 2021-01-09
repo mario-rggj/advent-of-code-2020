@@ -1,4 +1,4 @@
-import Parser from '../utils/Parser';
+import Parser from '../utils/parser';
 import DatabaseEntry from './database-entry';
 import Policy from './policy';
 import SledPolicy from './sled-policy';

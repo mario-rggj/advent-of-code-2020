@@ -1,12 +1,12 @@
 import { ExerciseRunnerResult } from '../utils/exercise-runner-result';
-import Parser from '../utils/Parser';
+import Parser from '../utils/parser';
 import ExpenseReport from './expense-report';
 
-export function run(filePath = './src/1/expense-report.txt'): ExerciseRunnerResult {
+export function run(filePath = './inputs/1.txt'): ExerciseRunnerResult {
 	const parsedEntries = Parser.fromTxtToNumberArray(filePath);
 	const expenseReport = new ExpenseReport(parsedEntries);
-	return { 
-		partOne: expenseReport.calculateTwoEntries(), 
-		partTwo: expenseReport.calculateThreeEntries() 
+	return {
+		partOne: expenseReport.calculateTwoEntries(),
+		partTwo: expenseReport.calculateThreeEntries()
 	};
 }
