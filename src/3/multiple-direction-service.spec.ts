@@ -1,7 +1,6 @@
 import MultipleDirectionService from './multiple-direction-service';
 import Position from './position';
 import Slope from './slope';
-import Toboggan from './toboggan';
 
 describe('MultipleDirectionService', () => {
 	it('goes downhill in multiple directions and multiply the trees counts', () => {
@@ -13,14 +12,13 @@ describe('MultipleDirectionService', () => {
 		];
 		const slope = new Slope(positions);
 		const multipleDirectionService = new MultipleDirectionService();
-		const toboggan = new Toboggan(slope, {down:1, right: 1});
 		const directions = [
 			{right: 1, down: 1},
 			{right: 3, down: 1},
 		];
 
 		const expectedMultiplicationResult = 6;
-		const multiplicationResult = multipleDirectionService.goDownhillInMultipleDirections(toboggan, directions);
+		const multiplicationResult = multipleDirectionService.goDownhillInMultipleDirections(directions, slope);
 
 		expect(multiplicationResult).toEqual(expectedMultiplicationResult);
 	});

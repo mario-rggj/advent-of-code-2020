@@ -14,22 +14,11 @@ describe('Toboggan', () => {
 
 	describe('Given down 1 right 1 direction', () => {
 		const direction: Direction = { down: 1, right: 1 };
-		const toboggan = new Toboggan(slope, direction);
+		const toboggan = new Toboggan(direction);
 
 		it('hits three trees', () => {
-			const treesHit = toboggan.goDownhill();
+			const treesHit = toboggan.goDownhill(slope);
 			expect(treesHit).toEqual(3);
 		});
-	});
-
-	it('changes direction', () => {
-		const oldDirection = {down: 1, right: 3};
-		const newDirection = {down: 2, right: 5};
-		const slope = new Slope([[]]);
-		const toboggan = new Toboggan(slope, oldDirection);
-
-		toboggan.changeDirection(newDirection);
-
-		expect(toboggan.currentDirection).toEqual(newDirection);
 	});
 });
