@@ -8,13 +8,13 @@ export default class PassportScanner {
 		, 0);
 	}
 
-	private isValid(passport: Passport) {
-		return passport.birthYear
+	private isValid(passport: Passport): boolean {
+		return !!(passport.birthYear
 			&& passport.expirationYear
 			&& passport.eyeColor
 			&& passport.hairColor
 			&& passport.height
 			&& passport.id
-			&& passport.issueYear;
+			&& passport.issueYear);
 	}
 }
