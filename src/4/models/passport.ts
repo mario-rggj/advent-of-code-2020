@@ -13,10 +13,15 @@ export default class Passport {
 		if (this.birthYear?.length !== 4) {
 			return false;
 		}
-		if (parseInt(this.birthYear) < 1920 || parseInt(this.birthYear) > 2002) {
+		const birthYearAsInteger = parseInt(this.birthYear);
+		return birthYearAsInteger >= 1920 && birthYearAsInteger <= 2002;
+	}
+
+	hasValidIssueYear(): boolean {
+		if (this.issueYear?.length !== 4) {
 			return false;
 		}
-		
-		return true;
+		const issueYearAsInteger = parseInt(this.issueYear);
+		return issueYearAsInteger >= 2010 && issueYearAsInteger <= 2020;
 	}
 }
