@@ -1,3 +1,4 @@
+import Passport from '../models/passport';
 import PassportScanner from '../models/passport-scanner';
 
 describe('PassportScanner', () => {
@@ -43,7 +44,7 @@ describe('PassportScanner', () => {
 				}
 			];
 
-			const validPassportsCount = passportScanner.scanPassportBatch(passports);
+			const validPassportsCount = passportScanner.scanPassportBatch(passports as Passport[]);
 
 			expect(validPassportsCount).toEqual(2);
 		});

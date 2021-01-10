@@ -1,5 +1,5 @@
 import fs from 'fs';
-import Parser from './Parser';
+import Parser from './parser';
 
 describe('Given text file with numbers, separated by newline', () => {
 	const testFilePath = './src/utils/input-test.txt';

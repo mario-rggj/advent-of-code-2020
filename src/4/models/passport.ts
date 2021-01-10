@@ -13,9 +13,9 @@ export default class Passport {
 		if (this.birthYear?.length !== 4) {
 			return false;
 		}
-		// if (parseInt(this.birthYear)) {
-		// 	return false
-		// }
+		if (parseInt(this.birthYear) < 1920 || parseInt(this.birthYear) > 2002) {
+			return false;
+		}
 		
 		return true;
 	}

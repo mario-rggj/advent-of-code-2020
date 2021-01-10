@@ -29,16 +29,16 @@ export default class PassportParser {
 				const id = PassportParser.findAttribute(passport, 'pid');
 				const countryId = PassportParser.findAttribute(passport, 'cid');
 
-				return {
-					issueYear,
+				return new Passport(
 					birthYear,
+					issueYear,
 					expirationYear,
 					height,
 					hairColor,
 					eyeColor,
 					id,
 					countryId
-				};
+				);
 			});
 	}
 
