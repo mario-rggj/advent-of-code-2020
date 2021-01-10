@@ -29,7 +29,7 @@ describe('PassportParser', () => {
 		it('parses file to a passport array', () => {
 			const parsedPassports = PassportParser.fromBatchFile(passportBatchFilePath);
 
-			expect(parsedPassports).toMatchObject([
+			expect(parsedPassports).toEqual([
 				{ 
 					eyeColor: 'gry', 
 					id: '860033327', 
