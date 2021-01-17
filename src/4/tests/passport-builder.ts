@@ -54,6 +54,11 @@ export class PassportTestBuilder {
 		return this;
 	}
 
+	withPassportId(id: string): PassportTestBuilder {
+		this.id = id;
+		return this;
+	}
+
 	withValidators(validators: Validator[]): PassportTestBuilder {
 		this.validators = validators;
 		return this;
