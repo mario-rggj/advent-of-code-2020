@@ -39,6 +39,11 @@ export class PassportTestBuilder {
 		return this;
 	}
 
+	withHeight(height: string): PassportTestBuilder {
+		this.height = height;
+		return this;
+	}
+
 	withValidators(validators: Validator[]): PassportTestBuilder {
 		this.validators = validators;
 		return this;

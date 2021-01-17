@@ -3,6 +3,7 @@ import { PassportTestBuilder } from './passport-builder';
 import BirthYearValidator from '../validators/birth-year-validator';
 import IssueYearValidator from '../validators/issue-year-validator';
 import ExpirationYearValidator from '../validators/expiration-year-validator';
+import HeightValidator from '../validators/height-validator';
 
 describe('Passport', () => {
 	describe('Birth Year validation', () => {
@@ -107,6 +108,45 @@ describe('Passport', () => {
 					const passport = new PassportTestBuilder()
 						.withExpirationYear(expirationYear)
 						.withValidators([new ExpirationYearValidator])
+						.build();
+					expect(passport.validate()).toBeFalse();
+				});
+		});
+	});
+
+	describe('Height validation', () => {
+		describe('Given valid height', () => {
+			each([
+				'150cm',
+				'59in',
+				'193cm',
+				'76in',
+			])
+				.it('when height is %s', (height) => {
+					const passport = new PassportTestBuilder()
+						.withHeight(height)
+						.withValidators([new HeightValidator])
+						.build();
+					expect(passport.validate()).toBeTrue();
+				});
+		});
+
+		describe('Given invalid height', () => {
+			each([
+				'150',
+				'149cm',
+				'150CM',
+				'194cm',
+				'58in',
+				'59IN',
+				'77in',
+				'abc',
+				'!',
+			])
+				.it('when height is %s invalidate passport', (height) => {
+					const passport = new PassportTestBuilder()
+						.withHeight(height)
+						.withValidators([new HeightValidator])
 						.build();
 					expect(passport.validate()).toBeFalse();
 				});
