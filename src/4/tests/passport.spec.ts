@@ -49,7 +49,7 @@ describe('Passport', () => {
 				});
 		});
 
-		describe('Given valid issued year', () => {
+		describe('Given invalid issued year', () => {
 			each([
 				'2000',
 				'!!',
