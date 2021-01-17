@@ -1,3 +1,5 @@
+import { Validator } from './validators';
+
 export default class Passport {
 
 	constructor(readonly birthYear?: string,
@@ -7,21 +9,16 @@ export default class Passport {
 		readonly hairColor?: string,
 		readonly eyeColor?: string,
 		readonly id?: string,
-		readonly countryId?: string) { }
+		readonly countryId?: string,
+		readonly validators?: Validator[]) { }
 
-	hasValidBirthYear(): boolean {
-		if (this.birthYear?.length !== 4) {
-			return false;
+	validate(): boolean {
+		if (this.validators && this.validators.length > 0) {
+			const isValid = this.validators.reduce((isValid, validator) => {
+				return validator.validate(this) && isValid;
+			},true);
+			return isValid;
 		}
-		const birthYearAsInteger = parseInt(this.birthYear);
-		return birthYearAsInteger >= 1920 && birthYearAsInteger <= 2002;
-	}
-
-	hasValidIssueYear(): boolean {
-		if (this.issueYear?.length !== 4) {
-			return false;
-		}
-		const issueYearAsInteger = parseInt(this.issueYear);
-		return issueYearAsInteger >= 2010 && issueYearAsInteger <= 2020;
+		return true;
 	}
 }

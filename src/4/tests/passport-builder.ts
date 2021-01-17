@@ -1,4 +1,6 @@
+import PasswordValidator from '../../2/password-validator';
 import Passport from '../models/passport';
+import { Validator } from '../models/validators';
 
 export class PassportTestBuilder {
 	birthYear: string;
@@ -9,6 +11,7 @@ export class PassportTestBuilder {
 	eyeColor: string;
 	id: string;
 	countryId: string;
+	validators: Validator[];
 
 	constructor() {
 		this.birthYear = '';
@@ -19,6 +22,7 @@ export class PassportTestBuilder {
 		this.eyeColor = '';
 		this.id = '';
 		this.countryId = '';
+		this.validators = [];
 	}
 
 	withBirthYear(year: string): PassportTestBuilder  {
@@ -31,7 +35,12 @@ export class PassportTestBuilder {
 		return this;
 	}
 
+	withValidators(validators: Validator[]) {
+		this.validators = validators;
+		return this;
+	}
+
 	build(): Passport {
-		return new Passport(this.birthYear, this.issueYear, this.expirationYear, this.height, this.hairColor, this.eyeColor, this.id, this.countryId);
+		return new Passport(this.birthYear, this.issueYear, this.expirationYear, this.height, this.hairColor, this.eyeColor, this.id, this.countryId, this.validators);
 	}
 }
