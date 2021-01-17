@@ -4,6 +4,7 @@ import BirthYearValidator from '../validators/birth-year-validator';
 import IssueYearValidator from '../validators/issue-year-validator';
 import ExpirationYearValidator from '../validators/expiration-year-validator';
 import HeightValidator from '../validators/height-validator';
+import HairColorValidator from '../validators/hair-color-validator';
 
 describe('Passport', () => {
 	describe('Birth Year validation', () => {
@@ -147,6 +148,44 @@ describe('Passport', () => {
 					const passport = new PassportTestBuilder()
 						.withHeight(height)
 						.withValidators([new HeightValidator])
+						.build();
+					expect(passport.validate()).toBeFalse();
+				});
+		});
+	});
+
+	describe('Hair color validation', () => {
+		describe('Given valid hair color', () => {
+			each([
+				'#123456',
+				'#aaaaaa',
+				'#54cdef',
+				'#5abcd9',
+			])
+				.it('when hair color is %s', (hairColor) => {
+					const passport = new PassportTestBuilder()
+						.withHairColor(hairColor)
+						.withValidators([new HairColorValidator])
+						.build();
+					expect(passport.validate()).toBeTrue();
+				});
+		});
+
+		describe('Given invalid hair color', () => {
+			each([
+				'#',
+				'',
+				'#12345',
+				'abcdefg',
+				'123456',
+				'#1234567',
+				'#abcdeg',
+				'!',
+			])
+				.it('when hair color is %s invalidate passport', (hairColor) => {
+					const passport = new PassportTestBuilder()
+						.withHairColor(hairColor)
+						.withValidators([new HairColorValidator])
 						.build();
 					expect(passport.validate()).toBeFalse();
 				});

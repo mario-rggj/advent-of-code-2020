@@ -44,6 +44,11 @@ export class PassportTestBuilder {
 		return this;
 	}
 
+	withHairColor(hairColor: string): PassportTestBuilder {
+		this.hairColor = hairColor;
+		return this;
+	}
+
 	withValidators(validators: Validator[]): PassportTestBuilder {
 		this.validators = validators;
 		return this;
