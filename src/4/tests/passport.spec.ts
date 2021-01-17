@@ -2,6 +2,7 @@ import each from 'jest-each';
 import { PassportTestBuilder } from './passport-builder';
 import BirthYearValidator from '../validators/birth-year-validator';
 import IssueYearValidator from '../validators/issue-year-validator';
+import ExpirationYearValidator from '../validators/expiration-year-validator';
 
 describe('Passport', () => {
 	describe('Birth Year validation', () => {
@@ -71,6 +72,41 @@ describe('Passport', () => {
 					const passport = new PassportTestBuilder()
 						.withIssueYear(issueYear)
 						.withValidators([new IssueYearValidator])
+						.build();
+					expect(passport.validate()).toBeFalse();
+				});
+		});
+	});
+
+	describe('Expiration Year validation', () => {
+		describe('Given valid expiration year', () => {
+			each([
+				'2020',
+				'2022',
+				'2025',
+				'2030',
+			])
+				.it('when expiration year is %s', (expirationYear) => {
+					const passport = new PassportTestBuilder()
+						.withExpirationYear(expirationYear)
+						.withValidators([new ExpirationYearValidator])
+						.build();
+					expect(passport.validate()).toBeTrue();
+				});
+		});
+
+		describe('Given invalid expiration year', () => {
+			each([
+				'2019',
+				'!!',
+				'abc',
+				'2031',
+				'20000',
+			])
+				.it('when expiration year is %s invalidate passport', (expirationYear) => {
+					const passport = new PassportTestBuilder()
+						.withExpirationYear(expirationYear)
+						.withValidators([new ExpirationYearValidator])
 						.build();
 					expect(passport.validate()).toBeFalse();
 				});

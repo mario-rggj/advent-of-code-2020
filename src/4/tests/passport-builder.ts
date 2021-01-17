@@ -34,6 +34,11 @@ export class PassportTestBuilder {
 		return this;
 	}
 
+	withExpirationYear(expirationYear: string): PassportTestBuilder {
+		this.expirationYear = expirationYear;
+		return this;
+	}
+
 	withValidators(validators: Validator[]): PassportTestBuilder {
 		this.validators = validators;
 		return this;
