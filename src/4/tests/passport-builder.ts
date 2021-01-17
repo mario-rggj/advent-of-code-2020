@@ -1,6 +1,5 @@
-import PasswordValidator from '../../2/password-validator';
 import Passport from '../models/passport';
-import { Validator } from '../models/validators';
+import Validator from '../validators/validator';
 
 export class PassportTestBuilder {
 	birthYear: string;
@@ -30,12 +29,12 @@ export class PassportTestBuilder {
 		return this;
 	}
 
-	withIssueYear(issueYear: string) {
+	withIssueYear(issueYear: string): PassportTestBuilder {
 		this.issueYear = issueYear;
 		return this;
 	}
 
-	withValidators(validators: Validator[]) {
+	withValidators(validators: Validator[]): PassportTestBuilder {
 		this.validators = validators;
 		return this;
 	}

@@ -1,6 +1,7 @@
 import each from 'jest-each';
 import { PassportTestBuilder } from './passport-builder';
-import { BirthYearValidator, IssueYearValidator } from '../models/validators';
+import BirthYearValidator from '../validators/birth-year-validator';
+import IssueYearValidator from '../validators/issue-year-validator';
 
 describe('Passport', () => {
 	describe('Birth Year validation', () => {

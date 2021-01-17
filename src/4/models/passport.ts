@@ -1,4 +1,4 @@
-import { Validator } from './validators';
+import Validator from '../validators/validator';
 
 export default class Passport {
 
