@@ -5,6 +5,7 @@ import IssueYearValidator from '../validators/issue-year-validator';
 import ExpirationYearValidator from '../validators/expiration-year-validator';
 import HeightValidator from '../validators/height-validator';
 import HairColorValidator from '../validators/hair-color-validator';
+import EyeColorValidator from '../validators/eye-color-validator';
 
 describe('Passport', () => {
 	describe('Birth Year validation', () => {
@@ -186,6 +187,48 @@ describe('Passport', () => {
 					const passport = new PassportTestBuilder()
 						.withHairColor(hairColor)
 						.withValidators([new HairColorValidator])
+						.build();
+					expect(passport.validate()).toBeFalse();
+				});
+		});
+	});
+
+	describe('Eye color validation', () => {
+		describe('Given valid eye color', () => {
+			each([
+				'amb',
+				'blu',
+				'brn',
+				'gry',
+				'grn',
+				'hzl',
+				'oth',
+			])
+				.it('when eye color is %s', (eyeColor) => {
+					const passport = new PassportTestBuilder()
+						.withEyeColor(eyeColor)
+						.withValidators([new EyeColorValidator])
+						.build();
+					expect(passport.validate()).toBeTrue();
+				});
+		});
+
+		describe('Given invalid eye color', () => {
+			each([
+				'',
+				'!',
+				'ambb',
+				'anb',
+				'gra',
+				'b',
+				'blue',
+				'ble',
+				'123',
+			])
+				.it('when eye color is %s invalidate passport', (eyeColor) => {
+					const passport = new PassportTestBuilder()
+						.withEyeColor(eyeColor)
+						.withValidators([new EyeColorValidator])
 						.build();
 					expect(passport.validate()).toBeFalse();
 				});

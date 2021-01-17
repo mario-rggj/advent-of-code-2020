@@ -49,6 +49,11 @@ export class PassportTestBuilder {
 		return this;
 	}
 
+	withEyeColor(eyeColor: string): PassportTestBuilder {
+		this.eyeColor = eyeColor;
+		return this;
+	}
+
 	withValidators(validators: Validator[]): PassportTestBuilder {
 		this.validators = validators;
 		return this;
