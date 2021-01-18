@@ -1,50 +1,82 @@
 import Passport from '../models/passport';
 import PassportScanner from '../models/passport-scanner';
+import BirthYearValidator from '../validators/birth-year-validator';
+import CountryIdValidator from '../validators/country-id-validator';
+import ExpirationYearValidator from '../validators/expiration-year-validator';
+import EyeColorValidator from '../validators/eye-color-validator';
+import HairColorValidator from '../validators/hair-color-validator';
+import HeightValidator from '../validators/height-validator';
+import IssueYearValidator from '../validators/issue-year-validator';
+import PassportIdValidator from '../validators/passport-id-validator';
+import { PassportTestBuilder } from './passport-builder';
 
 describe('PassportScanner', () => {
 	describe('Given a passport array', () => {
-		it('counts the amount of valid passports', () => {
+		const validators = [
+			new BirthYearValidator(),
+			new CountryIdValidator(),
+			new ExpirationYearValidator(),
+			new EyeColorValidator(),
+			new HairColorValidator(),
+			new HeightValidator(),
+			new IssueYearValidator(),
+			new PassportIdValidator()
+		];
+		const passports = [
+			new PassportTestBuilder()
+				.withIssueYear('2017')
+				.withBirthYear('1937')
+				.withExpirationYear('2020')
+				.withHeight('183cm')
+				.withHairColor('#fffffd')
+				.withEyeColor('gry')
+				.withPassportId('860033327')
+				.withCountryId('147')
+				.withValidators(validators)
+				.build(),
+			new PassportTestBuilder()
+				.withIssueYear('2013')
+				.withBirthYear('1929')
+				.withExpirationYear('2023')
+				.withHairColor('#cfa07d')
+				.withEyeColor('amb')
+				.withPassportId('028048884')
+				.withCountryId('350')
+				.withValidators(validators)
+				.build(),
+			new PassportTestBuilder()
+				.withIssueYear('2013')
+				.withBirthYear('1931')
+				.withExpirationYear('2024')
+				.withHeight('179cm')
+				.withHairColor('#ae17e1')
+				.withEyeColor('brn')
+				.withPassportId('760753108')
+				.withValidators(validators)
+				.build(),
+			new PassportTestBuilder()
+				.withIssueYear('2011')
+				.withExpirationYear('2025')
+				.withHeight('59in')
+				.withHairColor('#cfa07d')
+				.withEyeColor('brn')
+				.withPassportId('166559648')
+				.withValidators(validators)
+				.build(),
+		];
+
+		it('counts the amount of passports with required information', () => {
 			const passportScanner = new PassportScanner();
-			const passports = [
-				{
-					'issueYear': '2017',
-					'birthYear': '1937',
-					'expirationYear': '2020',
-					'height': '183cm',
-					'hairColor': '#fffffd',
-					'eyeColor': 'gry',
-					'id': '860033327',
-					'countryId': '147'
-				},
-				{
-					'issueYear': '2013',
-					'birthYear': '1929',
-					'expirationYear': '2023',
-					'hairColor': '#cfa07d',
-					'eyeColor': 'amb',
-					'id': '028048884',
-					'countryId': '350'
-				},
-				{
-					'issueYear': '2013',
-					'birthYear': '1931',
-					'expirationYear': '2024',
-					'height': '179cm',
-					'hairColor': '#ae17e1',
-					'eyeColor': 'brn',
-					'id': '760753108'
-				},
-				{
-					'issueYear': '2011',
-					'expirationYear': '2025',
-					'height': '59in',
-					'hairColor': '#cfa07d',
-					'eyeColor': 'brn',
-					'id': '166559648'
-				}
-			];
 
 			const validPassportsCount = passportScanner.scanPassportBatch(passports as Passport[]);
+
+			expect(validPassportsCount).toEqual(2);
+		});
+		
+		it('counts the amount of passports with valid information', () => {
+			const passportScanner = new PassportScanner();
+
+			const validPassportsCount = passportScanner.validatePassportBatch(passports as Passport[]);
 
 			expect(validPassportsCount).toEqual(2);
 		});

@@ -4,11 +4,17 @@ export default class PassportScanner {
 
 	scanPassportBatch(passports: Array<Passport>): number {
 		return passports.reduce((validAmount, passport) =>
-			this.isValid(passport) ? ++validAmount : validAmount
+			this.hasRequiredInformation(passport) ? ++validAmount : validAmount
 		, 0);
 	}
 
-	private isValid(passport: Passport): boolean {
+	validatePassportBatch(passports: Array<Passport>): number {
+		return passports.reduce((validAmount, passport) =>
+			passport.validate() ? ++validAmount : validAmount
+		,0);
+	}
+
+	private hasRequiredInformation(passport: Passport): boolean {
 		return !!(passport.birthYear
 			&& passport.expirationYear
 			&& passport.eyeColor
