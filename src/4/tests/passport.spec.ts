@@ -7,6 +7,7 @@ import HeightValidator from '../validators/height-validator';
 import HairColorValidator from '../validators/hair-color-validator';
 import EyeColorValidator from '../validators/eye-color-validator';
 import PassportIdValidator from '../validators/passport-id-validator';
+import CountryIdValidator from '../validators/country-id-validator';
 
 describe('Passport', () => {
 	describe('Birth Year validation', () => {
@@ -270,5 +271,26 @@ describe('Passport', () => {
 					expect(passport.validate()).toBeFalse();
 				});
 		});
+	});
+
+	describe('Country ID validation', () => {
+		describe('Given any country ID', () => {
+			each([
+				undefined,
+				null,
+				'88',
+				'20',
+				'',
+				'!',
+			])
+				.it('when country ID is %s', (countryId) => {
+					const passport = new PassportTestBuilder()
+						.withCountryId(countryId)
+						.withValidators([new CountryIdValidator])
+						.build();
+					expect(passport.validate()).toBeTrue();
+				});
+		});
+
 	});
 });
