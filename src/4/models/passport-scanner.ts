@@ -10,7 +10,7 @@ export default class PassportScanner {
 
 	validatePassportBatch(passports: Array<Passport>): number {
 		return passports.reduce((validAmount, passport) =>
-			passport.validate() ? ++validAmount : validAmount
+			this.hasRequiredInformation(passport) && passport.validate() ? ++validAmount : validAmount
 		,0);
 	}
 

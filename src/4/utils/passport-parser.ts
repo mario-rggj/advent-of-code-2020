@@ -8,7 +8,6 @@ import HairColorValidator from '../validators/hair-color-validator';
 import HeightValidator from '../validators/height-validator';
 import IssueYearValidator from '../validators/issue-year-validator';
 import PassportIdValidator from '../validators/passport-id-validator';
-import Validator from '../validators/validator';
 
 export default class PassportParser {
 	static fromBatchFile(batchFilePath: string): Array<Passport> {
