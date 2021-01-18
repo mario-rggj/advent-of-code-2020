@@ -27,9 +27,14 @@ describe('Exercise 4',() => {
 			fs.rmSync(passportBatchPath);
 		});
 
-		it('counts all valid passports', () => {
+		it('counts all passports with required information', () => {
 			const exerciseResult = exerciseRunner.run(passportBatchPath);
 			expect(exerciseResult.partOne).toEqual(2);
+		});
+
+		it('counts all passports with valid information', () => {
+			const exerciseResult = exerciseRunner.run(passportBatchPath);
+			expect(exerciseResult.partTwo).toEqual(2);
 		});
 		
 	});
