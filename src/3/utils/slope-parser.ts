@@ -10,8 +10,8 @@ export default class SlopeParser {
 		fileContent.forEach((inputLine, lineIndex) => {
 			const columns = inputLine.split('').map((inputCharacter, columnIndex) => {
 				return inputCharacter === '.'
-					? Position.terrainAt(lineIndex, columnIndex)
-					: Position.treeAt(lineIndex, columnIndex);
+					? Position.terrainAt(columnIndex, lineIndex)
+					: Position.treeAt(columnIndex, lineIndex);
 			});
 			positions.push(columns);
 		});

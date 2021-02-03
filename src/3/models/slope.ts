@@ -11,22 +11,22 @@ export default class Slope {
 	}
 
 	navigate(currentPosition: Position, direction: Direction): NavigationResult {
-		const newXPosition = currentPosition.x + direction.down;
-		const newYPosition = this.calculateNewYPosition(currentPosition, direction);
-		const newPosition = this.positions[newXPosition][newYPosition];
-		const reachedEnd = newXPosition === this.positions.length - 1;
+		const newYPosition = currentPosition.y + direction.down;
+		const newXPosition = this.calculateNewXPosition(currentPosition, direction);
+		const newPosition = this.positions[newYPosition][newXPosition];
+		const reachedEnd = newYPosition === this.positions.length - 1;
 
 		return { newPosition, reachedEnd };
 	}
 
-	private calculateNewYPosition(currentPosition: Position, direction: Direction): number {
-		let newYPosition = currentPosition.y + direction.right;
-		const YLimit = this.positions[0].length;
+	private calculateNewXPosition(currentPosition: Position, direction: Direction): number {
+		let newXPosition = currentPosition.x + direction.right;
+		const XLimit = this.positions[0].length;
 		
-		if (newYPosition >= YLimit){
-			newYPosition = newYPosition - YLimit;
+		if (newXPosition >= XLimit){
+			newXPosition = newXPosition - XLimit;
 		}
 
-		return newYPosition;
+		return newXPosition;
 	}
 }

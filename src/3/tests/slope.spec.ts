@@ -8,7 +8,7 @@ const makePositions = ({ x = 0, y = 0 }) => {
 	for (let i = 0; i < x; i++) {
 		const line = [];
 		for (let j = 0; j < y; j++) {
-			line.push(new Position(PositionType.TERRAIN, i, j));
+			line.push(new Position(PositionType.TERRAIN, j, i));
 		}
 		result.push(line);
 	}
@@ -21,12 +21,12 @@ describe('Slope', () => {
 		const slope = new Slope(positions);
 
 		each([
-			[0, 0, 1, 3, false],
-			[1, 1, 2, 0, false],
-			[2, 2, 3, 1, true],
-			[2, 3, 3, 2, true],
+			[0, 0, 3, 1, false],
+			[1, 1, 0, 2, false],
+			[2, 2, 1, 3, true],
+			[3, 2, 2, 3, true],
 		]).it('when current position is X:%s Y:%s', (currentX, currentY, expectedX, expectedY, expectedReachedEnd) => {
-			const currentPosition = positions[currentX][currentY];
+			const currentPosition = positions[currentY][currentX];
 			const expectedPosition = { x: expectedX, y: expectedY };
 			const direction = { down: 1, right: 3 };
 			const navigationResult = slope.navigate(currentPosition, direction);
