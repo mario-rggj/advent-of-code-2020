@@ -1,4 +1,4 @@
---- Day 4: Passport Processing ---
+#### --- Day 4: Passport Processing ---
 
 You arrive at the airport only to realize that you grabbed your North Pole Credentials instead of your passport. While these documents are extremely similar, North Pole Credentials aren't issued by a country and therefore aren't actually valid documentation for travel in most of the world.
 
@@ -16,6 +16,7 @@ hcl (Hair Color)
 ecl (Eye Color)
 pid (Passport ID)
 cid (Country ID)
+
 Passport data is validated in batch files (your puzzle input). Each passport is represented as a sequence of key:value pairs separated by spaces or newlines. Passports are separated by blank lines.
 
 Here is an example batch file containing four passports:
@@ -50,7 +51,7 @@ Your puzzle answer was 226.
 
 The first half of this puzzle is complete! It provides one gold star: *
 
---- Part Two ---
+#### --- Part Two ---
 
 The line is moving more quickly now, but you overhear airport security talking about how passports with invalid data are getting through. Better add some data validation, quick!
 
