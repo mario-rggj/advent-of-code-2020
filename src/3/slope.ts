@@ -24,7 +24,7 @@ export default class Slope {
 		const YLimit = this.positions[0].length;
 		
 		if (newYPosition >= YLimit){
-			newYPosition = (YLimit - newYPosition) * -1;
+			newYPosition = newYPosition - YLimit;
 		}
 
 		return newYPosition;
