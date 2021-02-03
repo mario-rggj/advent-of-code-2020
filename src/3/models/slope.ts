@@ -20,13 +20,9 @@ export default class Slope {
 	}
 
 	private calculateNewXPosition(currentPosition: Position, direction: Direction): number {
-		let newXPosition = currentPosition.x + direction.right;
+		const newXPosition = currentPosition.x + direction.right;
 		const XLimit = this.positions[0].length;
-		
-		if (newXPosition >= XLimit){
-			newXPosition = newXPosition - XLimit;
-		}
 
-		return newXPosition;
+		return newXPosition % XLimit;
 	}
 }
