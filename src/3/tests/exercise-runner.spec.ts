@@ -1,5 +1,5 @@
 import fs from 'fs';
-import * as exerciseRunner from './exercise-runner';
+import * as exerciseRunner from '../exercise-runner';
 
 describe('Exercise 3', () => {
 

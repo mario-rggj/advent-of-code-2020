@@ -1,4 +1,4 @@
-import {PositionType} from './position-type';
+import {PositionType} from '../interfaces/position-type';
 
 export default class Position {
 

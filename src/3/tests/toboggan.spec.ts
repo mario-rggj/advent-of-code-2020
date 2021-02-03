@@ -1,7 +1,7 @@
-import Direction from './direction';
-import Position from './position';
-import Slope from './slope';
-import Toboggan from './toboggan';
+import Direction from '../interfaces/direction';
+import Position from '../models/position';
+import Slope from '../models/slope';
+import Toboggan from '../models/toboggan';
 
 describe('Toboggan', () => {
 	const positions = [

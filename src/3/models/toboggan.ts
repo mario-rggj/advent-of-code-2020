@@ -1,5 +1,5 @@
 import Slope from './slope';
-import Direction from './direction';
+import Direction from '../interfaces/direction';
 
 export default class Toboggan {
 	constructor(private direction: Direction) {

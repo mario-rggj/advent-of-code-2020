@@ -1,7 +1,7 @@
 import each from 'jest-each';
-import Position from './position';
-import { PositionType } from './position-type';
-import Slope from './slope';
+import Position from '../models/position';
+import { PositionType } from '../interfaces/position-type';
+import Slope from '../models/slope';
 
 const makePositions = ({ x = 0, y = 0 }) => {
 	const result = [];

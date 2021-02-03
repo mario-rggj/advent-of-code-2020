@@ -1,6 +1,6 @@
 import Position from './position';
-import Direction from './direction';
-import NavigationResult from './navigation-result';
+import Direction from '../interfaces/direction';
+import NavigationResult from '../interfaces/navigation-result';
 
 export default class Slope {
 	constructor(private readonly positions: Array<Array<Position>>) {

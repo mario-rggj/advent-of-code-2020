@@ -1,6 +1,6 @@
-import MultipleDirectionService from './multiple-direction-service';
-import Position from './position';
-import Slope from './slope';
+import MultipleDirectionService from '../services/multiple-direction-service';
+import Position from '../models/position';
+import Slope from '../models/slope';
 
 describe('MultipleDirectionService', () => {
 	it('goes downhill in multiple directions and multiply the trees counts', () => {

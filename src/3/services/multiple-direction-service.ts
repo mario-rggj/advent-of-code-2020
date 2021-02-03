@@ -1,9 +1,9 @@
-import Direction from './direction';
-import Slope from './slope';
-import Toboggan from './toboggan';
+import Direction from '../interfaces/direction';
+import Slope from '../models/slope';
+import Toboggan from '../models/toboggan';
 
 export default class MultipleDirectionService {
-	goDownhillInMultipleDirections(directions: Array<Direction>, slope: Slope) {
+	goDownhillInMultipleDirections(directions: Array<Direction>, slope: Slope): number {
 		let treeCountMultiplication = 1;
 
 		directions.forEach(direction => {
